@@ -69,7 +69,8 @@ public class AuthServiceImpl implements AuthService {
         userMapper.updateById(user);
 
         String token = jwtUtil.generateToken(user.getId(),user.getUsername());
-        LoginResponse response = new LoginResponse(200,"登录成功",token);
+        String username=user.getUsername();
+        LoginResponse response = new LoginResponse(200,"登录成功",token,username);
 
         return Result.success(response);
     }
